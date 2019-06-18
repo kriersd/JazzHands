@@ -11,6 +11,16 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "pug": "2.0.0-beta11"
+    "handlebars": "^4.1.2",
+    "express-handlebars": "^3.1.0",
+    "body-parser": "latest",
+    "hbs": "~4.0.1",
+    "request": "^2.87.0",
+    "bluebird": "^3.5.0",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.17",
+    "jquery": "^3.3.1",
+    "dotenv": "^6.2.0",
+    "jspdf": "^1.5.3"
   }
 }
