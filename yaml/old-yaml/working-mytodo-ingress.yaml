@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.bluemix.net/redirect-to-https: "True"
+    ingress.bluemix.net/rewrite-path: serviceName=mytodos rewrite=/
+  generation: 1
+  name: mytodos-ingress
+  selfLink: /apis/extensions/v1beta1/namespaces/default/ingresses/mytodos-ingress
+spec:
+  rules:
+  - host: dakmycluster1.us-south.containers.appdomain.cloud
+    http:
+      paths:
+      - backend:
+          serviceName: mytodos
+          servicePort: 8080
+        path: /todo/
+      - backend:
+          serviceName: jazzhands-svc
+          servicePort: 8080
+        path: /jazz/
+  tls:
+  - hosts:
+    - dakmycluster1.us-south.containers.appdomain.cloud
+    secretName: dakmycluster1
+status:
+  loadBalancer: {}
