@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jazzhands-deployment
+  namespace: jazzhands
+  labels:
+    app: jazzhands
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jazzhands
+  template:
+    metadata:
+      labels:
+        app: jazzhands
+    spec:
+      containers:
+      - name: jazzhands
+        image: davekrier/jazzhands
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+          - name: platform
+            valueFrom:
+               configMapKeyRef:
+                 name: where-am-i-config
+                 key: platform

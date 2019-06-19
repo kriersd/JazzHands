@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: jazzhands-ingress
+  namespace: jazzhands
+  annotations:
+    ingress.bluemix.net/redirect-to-https: "True"
+    ingress.bluemix.net/rewrite-path: serviceName=jazzhands-service-clusterip rewrite=/
+spec:
+  rules:
+  - host: dakmycluster1.us-south.containers.appdomain.cloud
+    http:
+      paths:
+      - path: /jh/
+        backend:
+          serviceName: jazzhands-service-clusterip
+          servicePort: 80
+  tls:
+    - hosts:
+      - dakmycluster1.us-south.containers.appdomain.cloud
+      secretName: dakmycluster1
