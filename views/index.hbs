@@ -1,17 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Best Website</title>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Jazz Hands</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="stylesheets/normalize.css">
+  <link rel="stylesheet" href="stylesheets/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
+
+<script>
+//wait for the docuent to be available
+$(document).ready(function(){
+    var index = -1;
+    //get the venues object from the server
+    var venues = {{{json data}}};
+    // set a listener for the radio buttons to be selected
+     $('#cities').change(function(){
+        //get the city value from the selected radio button
+        var city = $("input[name='cityRadio']:checked").val();
+        var listVenues = {};
+
+        //figure out which city was selected and prepare it to be created into a list
+        if (city=='sf'){
+            listVenues = venues.sf;
+        }else if (city == 'chi'){
+            listVenues = venues.chi;
+        }else if(city == 'ny'){
+            listVenues = venues.ny;
+        }
+        //make sure the div is empty and does not have any pre existing lists
+        $(list).empty();
+
+        //create the list of values
+        var str = "<ul>"
+        listVenues.forEach(function(listVenues) {
+            str += '<li>'+ listVenues.name + ' '+ listVenues.lat+ ' '+ listVenues.lon+ '</li>';
+        }); 
+        str += '</ul>';
+        //inject the html list into the document
+        document.getElementById("list").innerHTML = str;
+     });
+});
+
+</script>
+
+
 <body>
-<div class="container">
-    Hi Body {{title}}
+<div class="container" id ="body">
+    Hi erryBody
+    <form id="cities">
+        <input type="radio" name="cityRadio" value="sf"> San Francisco<br></input>
+        <input type="radio" name="cityRadio" value="chi"> Chicago<br></input>
+        <input type="radio" name="cityRadio" value="ny"> New York<br></input>
+    </form>
+    <div id="list">
+        <ul name="listOfVenues">
+            <l1>Pick a city to view venues!</l1>
+
+        </ul>
+    </div>
+    
 </div>
+
 Hi footer
 </body>
 </html>
