@@ -30,9 +30,9 @@
 <script>
 //wait for the docuent to be available
 $(document).ready(function(){
-    if({{envplatform}} == "IKS"){
+    if("{{envplatform}}" == "IKS"){
         document.getElementById("platform").innerHTML = 'You Are Running On:<img src="images/IKS.png" alt="platformIcon" height="50px" width="50px">';
-    }else if({{envplatform}} == "OpenShift"){
+    }else if("{{envplatform}}" == "OpenShift"){
         document.getElementById("platform").innerHTML = 'You Are Running On:<img src="images/OpenShift.png" alt="platformIcon" height="50px" width="50px">';
     }
     else{
