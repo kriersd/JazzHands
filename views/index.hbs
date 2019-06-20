@@ -53,7 +53,7 @@ $(document).ready(function(){
         //create the list of values
         var str = "<ul>"
         listVenues.forEach(function(listVenues) {
-            str += '<li>'+ listVenues.name + ' '+ listVenues.lat+ ' '+ listVenues.lon+ '</li>';
+            str += '<li><a href="https://www.google.com/maps?q=' + listVenues.lat + '+' + listVenues.lon + '" target="_blank">' + listVenues.name+'</a></li>';
         }); 
         str += '</ul>';
         //inject the html list into the document
@@ -64,10 +64,13 @@ $(document).ready(function(){
 
 <div class="container" id ="body">
     <div class="row">
-        <div class= "eight columns" class="u-pull-left">You are currently on {{envplatform}} the jazziest platform</div>
-        <div class="four columns" class="u-pull-right"><b>BitCoin is currently prices at: ${{data.bcPrice}}</b></div>
+        <div class= "eight columns" class="u-pull-left">You are currently on the Jazzy Platform {{envplatform}}!</div>
+        <div class="four columns" class="u-pull-right"><b>BitCoin is Currently Priced At: ${{data.bcPrice}}</b></div>
     </div>
-    <div class="row"><h1>Jazz Hands!</h1></div>
+    <div class="row">
+        <h1>Jazz Hands!</h1>
+        <h3>Pick A City To View Venues That Accept Bitcoin</h3>
+        </div>
     <div class="row">
         <div class="one-half column" style="float:left">
             <form id="cities">
