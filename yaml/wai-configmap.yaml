@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: where-am-i-config
-  namespace: jazzhands
-data:
-  platform: iks

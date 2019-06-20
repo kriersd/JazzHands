@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: jazzhands-route
+  creationTimestamp: null
+  labels:
+    app: jazzhands
+    tier: frontend
+spec:
+  port:
+    targetPort: 3000
+  to:
+    name: jazzhands-svc
+    weight: 100
+status:
+  ingress: null
