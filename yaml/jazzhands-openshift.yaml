@@ -1,0 +1,55 @@
+# ConfigMap that will be loaded for environment variables
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: where-am-i-config
+data:
+  platform: OpenShift
+---
+# Deploymnt of application with 2 replicas
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jazzhands-deployment
+spec:
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  selector:
+    matchLabels:
+      app: jazzhands
+  template:   # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: jazzhands
+        tier: frontend
+    spec:
+      containers:
+      - name: jazzhands
+        image: davekrier/jazzhands
+        imagePullPolicy: Always
+        env:
+        # Define the environment variable
+        - name: envplatform
+          valueFrom:
+            configMapKeyRef:
+              # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+              name: where-am-i-config
+              # Specify the key associated with the value
+              key: platform
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jazzhands-lb
+  labels:
+    app: jazzhands
+    tier: frontend
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  loadBalancerIP:
+  selector:
+    app: jazzhands
+    tier: frontend
+  type: LoadBalancer
