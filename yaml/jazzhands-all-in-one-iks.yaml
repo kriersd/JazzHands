@@ -1,0 +1,92 @@
+# ConfigMap that will be loaded for environment variables
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: where-am-i-config
+data:
+  platform: IBM Kubernetes Service
+---
+# Deploymnt of application with 2 replicas
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jazzhands-deployment
+spec:
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  selector:
+    matchLabels:
+      app: jazzhands
+  template:   # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: jazzhands
+        tier: frontend
+    spec:
+      containers:
+      - name: jazzhands
+        image: davekrier/jazzhands
+        imagePullPolicy: Always
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: jazzhands-ingress
+  annotations:
+    ingress.bluemix.net/rewrite-path: "serviceName=jazzhands-svc rewrite=/"
+    # Force the use of https if the request is http
+    ingress.bluemix.net/redirect-to-https: "True"
+spec:
+  tls:
+  - hosts:
+    - dakmycluster1.us-south.containers.appdomain.cloud
+    secretName: dakmycluster1
+  rules:
+  - host: dakmycluster1.us-south.containers.appdomain.cloud
+    http:
+      paths:
+      - path: /jazz/
+        backend:
+          serviceName: jazzhands-svc
+          servicePort: 8080
+---
+# NodePort Service to expose frontend - Used in the ingress and for testing
+apiVersion: v1
+kind: Service
+metadata:
+  name: jazzhands-svc
+  labels:
+    app: jazzhands
+    tier: frontend
+spec:
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 3000
+  selector:
+    app: jazzhands
+    tier: frontend
+  type: NodePort
+
+---
+# LoadBalancer Service to expose frontend for Cloud Flair
+apiVersion: v1
+kind: Service
+metadata:
+  name: jazzhands-lb-svc
+  annotations:
+  labels:
+    app: jazzhands
+    tier: frontend
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: jazzhands
+    tier: frontend
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}
