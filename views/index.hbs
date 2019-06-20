@@ -30,6 +30,15 @@
 <script>
 //wait for the docuent to be available
 $(document).ready(function(){
+    if({{envplatform}} == "IKS"){
+        document.getElementById("platform").innerHTML = 'You Are Running On:<img src="images/IKS.png" alt="platformIcon" height="50px" width="50px">';
+    }else if({{envplatform}} == "OpenShift"){
+        document.getElementById("platform").innerHTML = 'You Are Running On:<img src="images/OpenShift.png" alt="platformIcon" height="50px" width="50px">';
+    }
+    else{
+        document.getElementById("platform").innerHTML = 'You are on The Jazziest Platform!';
+    }
+
     var index = -1;
     //get the venues object from the server
     var venues = {{{json data}}};
@@ -64,7 +73,7 @@ $(document).ready(function(){
 
 <div class="container" id ="body">
     <div class="row">
-        <div class= "eight columns" class="u-pull-left">You are currently on the Jazzy Platform {{envplatform}}!</div>
+        <div class= "eight columns" id="platform" class="u-pull-left">You Are Running On:</div>
         <div class="four columns" class="u-pull-right"><b>BitCoin is Currently Priced At: ${{data.bcPrice}}</b></div>
     </div>
     <div class="row">
