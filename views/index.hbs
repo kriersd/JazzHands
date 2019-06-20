@@ -31,9 +31,9 @@
 //wait for the docuent to be available
 $(document).ready(function(){
     if("{{envplatform}}" == "IKS"){
-        document.getElementById("platform").innerHTML = 'You Are Running On:<img src="images/IKS.png" alt="platformIcon" height="50px" width="50px">';
+        document.getElementById("platform").innerHTML = 'You Are Running On: <img src="images/IKS.png" alt="platformIcon" height="50px" width="70px"> IKS';
     }else if("{{envplatform}}" == "OpenShift"){
-        document.getElementById("platform").innerHTML = 'You Are Running On:<img src="images/OpenShift.png" alt="platformIcon" height="50px" width="50px">';
+        document.getElementById("platform").innerHTML = 'You Are Running On:<img src="images/OpenShift.png" alt="platformIcon" height="50px" width="70px"> OpenShift';
     }
     else{
         document.getElementById("platform").innerHTML = 'You are on The Jazziest Platform!';
@@ -73,7 +73,7 @@ $(document).ready(function(){
 
 <div class="container" id ="body">
     <div class="row">
-        <div class= "eight columns" id="platform" class="u-pull-left">You Are Running On:</div>
+        <div class= "eight columns" id="platform" class="u-pull-left">Jazz Hands!!!!!!!!</div>
         <div class="four columns" class="u-pull-right"><b>BitCoin is Currently Priced At: ${{data.bcPrice}}</b></div>
     </div>
     <div class="row">
@@ -83,6 +83,7 @@ $(document).ready(function(){
     <div class="row">
         <div class="one-half column" style="float:left">
             <form id="cities">
+                <h5><b>Cities</b></h5>
                 <input type="radio" name="cityRadio" value="sf"> San Francisco<br></input>
                 <input type="radio" name="cityRadio" value="chi"> Chicago<br></input>
                 <input type="radio" name="cityRadio" value="ny"> New York<br></input>
@@ -90,12 +91,18 @@ $(document).ready(function(){
             <img src="images/jazzhand-icon.png" alt="icon">
         </div>
         <div class="one-half column" style="float:right">
+            <h5><b>List of Venues:</b></h5>
             <div id="list">
                 <ul name="listOfVenues">
                     <l1>Pick a city to view venues!</l1>
                 </ul>
             </div>
         </div>
+    </div>
+
+    <div class= "footer">
+        <a class="button button-primary" href="https://github.com/kriersd/JazzHands" target="_blank">Walkthrough</a>
+        <a class="button button-primary" href="https://github.com/kriersd/JazzHands/raw/master/Documentation/Pitch.pdf" target="_blank">Pitch</a>
     </div>
 </div>
 </html>
