@@ -12,6 +12,13 @@ var dataToPass = {"sf":{}, "chi":{}, "ny":{}, "bcPrice":""};
 var venueUrl = 'https://coinmap.org/api/v1/venues/?';
 //get venues from coinmap
 var stringData = "";
+
+var formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2,
+});
+
 /*
 var getCall = (url, stringData) => {
   request.get({ uri: url + stringData }, function (error, response, body) {
@@ -51,7 +58,7 @@ router.get('/', function(req, res, next) {
               
               request.get({ uri: 'https://api.coindesk.com/v1/bpi/currentprice.json' }, function (error, response, body) {
                 if (!(error && response.statusCode !== 200)) {
-                  //parse into json object and then get only the NY venues
+                  //parse into json object and then get the rate
                   dataToPass.bcPrice = JSON.parse(body).bpi.USD.rate;
                   //pass the venues object using handlebar into the client html page,
                   //and create the html page

@@ -64,10 +64,10 @@ $(document).ready(function(){
 
 <div class="container" id ="body">
     <div class="row">
-        <div class="9 column" style="float:left"></div>
-        <div class="two column" style="float:right">{{data.bcPrice}}</div>
+        <div class= "eight columns" class="u-pull-left">You are currently on {{envplatform}} the jazziest platform</div>
+        <div class="four columns" class="u-pull-right"><b>BitCoin is currently prices at: ${{data.bcPrice}}</b></div>
     </div>
-    <h1>Hi erryBody you are on {{envplatform}}</h1>
+    <div class="row"><h1>Jazz Hands!</h1></div>
     <div class="row">
         <div class="one-half column" style="float:left">
             <form id="cities">
@@ -75,6 +75,7 @@ $(document).ready(function(){
                 <input type="radio" name="cityRadio" value="chi"> Chicago<br></input>
                 <input type="radio" name="cityRadio" value="ny"> New York<br></input>
             </form>
+            <img src="images/jazzhand-icon.png" alt="icon">
         </div>
         <div class="one-half column" style="float:right">
             <div id="list">
