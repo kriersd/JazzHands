@@ -1,0 +1,24 @@
+** NEW UNIVERSAL FILE **
+After changes below, the only difference is line#7  "platform: "
+Changed platform value to PLATFORM_TAG_HERE
+
+USAGE:  (Jenkins)
+if (it is IKS)
+  cat jazzhands-universal.yaml | sed 's/PLATFORM_TAG_HERE/IKS/g' | kubectl apply -f -
+if (it is RHOS)
+  cat jazzhands-universal.yaml | sed 's/PLATFORM_TAG_HERE/OpenShift/g' | kubectl apply -f -
+
+
+IKS FILE
+Removed comment line above Service definition from IKS (not in RHOS file)
+Removed "annotations:" from IKS  (nothing was defined)
+Removed "externalTrafficPolicy: Cluster" from IKS (not in RHOS file and per https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/ the Cluster setting is DEFAULT)
+Removed "sessionAffinity: None" from IKS (per https://kubernetes.io/docs/concepts/services-networking/service/  None is DEFAULT)
+Removed "status:
+  loadBalancer: {}" from IKS
+
+RHOS FILE
+Changed Service name to "name: jazzhands-lb-svc" in RHOS (to be consistent with IKS)
+Removed  "loadBalancerIP:" from RHOS file (necessary?  It doesn't have a value, so no?)
+
+
