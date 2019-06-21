@@ -6,7 +6,7 @@ USAGE:  (Jenkins)
 if (it is IKS)
   cat jazzhands-universal.yaml | sed 's/PLATFORM_TAG_HERE/IKS/g' | kubectl apply -f -
 if (it is RHOS)
-  cat jazzhands-universal.yaml | sed 's/PLATFORM_TAG_HERE/OpenShift/g' | kubectl apply -f -
+  cat jazzhands-universal.yaml | sed 's/PLATFORM_TAG_HERE/OpenShift/g' | oc apply -f -
 
 
 IKS FILE
