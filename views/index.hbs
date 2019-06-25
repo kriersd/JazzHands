@@ -30,14 +30,40 @@
 <script>
 //wait for the docuent to be available
 $(document).ready(function(){
+    var platform = "";
+    var timeleft = 60;
+
+    //get the environment platform variable from the server
+    //if("{{envplatform}}" == ""){
     if("{{envplatform}}" == "IKS"){
-        document.getElementById("platform").innerHTML = 'You Are Running On: <img src="images/IKS.png" alt="platformIcon" height="50px" width="70px"> IKS';
+        platform = 'You Are Running On: <img src="images/IKS.png" alt="platformIcon" height="50px" width="70px"> IKS ';
+        document.getElementById("timer").style.color = "blue";
+    //}else if("{{envplatform}}" == ""){
     }else if("{{envplatform}}" == "OpenShift"){
-        document.getElementById("platform").innerHTML = 'You Are Running On:<img src="images/OpenShift.png" alt="platformIcon" height="50px" width="70px"> OpenShift';
+        platform = 'You Are Running On:<img src="images/OpenShift.png" alt="platformIcon" height="50px" width="70px"> OpenShift ';
+        document.getElementById("timer").style.color = "red";
+        document.getElementById('progressBar').style.color = 'red';
+
     }
     else{
-        document.getElementById("platform").innerHTML = 'You are on The Jazziest Platform!';
+        platform = 'You are on The Jazziest Platform! ';
     }
+    //set the platform
+    document.getElementById("platform").innerHTML =  platform;
+
+    //start the counter interval
+    var myVar = setInterval(myTimer ,1000);
+        function myTimer() {
+            document.getElementById("timer").innerHTML =  " " + timeleft + " Seconds";
+            document.getElementById("progressBar").value = 60 - timeleft;
+
+            timeleft--;
+            //when the timer reaches 0 stop it. 
+            if(timeleft == 0){
+                clearInterval(myVar);
+                document.getElementById("timer").innerHTML =  ' Refresh';
+            }
+        }
 
     var index = -1;
     //get the venues object from the server
@@ -73,7 +99,12 @@ $(document).ready(function(){
 
 <div class="container" id ="body">
     <div class="row">
-        <div class= "eight columns" id="platform" class="u-pull-left">Jazz Hands!!!!!!!!</div>
+        <div class= "eight columns"  class="u-pull-left">
+            <div id="platform">You are on The Jazziest Platform! </div>
+            <div>
+                <progress value="0" max="60" id="progressBar"> </progress><a id='timer'></a>
+            </div>
+        </div> 
         <div class="four columns" class="u-pull-right"><b>BitCoin is Currently Priced At: ${{data.bcPrice}}</b></div>
     </div>
     <div class="row">
