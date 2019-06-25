@@ -1,5 +1,6 @@
 # FROM registry.redhat.io/ubi7/ubi
-FROM registry.redhat.io/ubi8/nodejs-10
+# FROM registry.redhat.io/ubi8/nodejs-10
+FROM davekrier/nodejs-10
 
 USER root
 
