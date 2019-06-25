@@ -1,4 +1,4 @@
-# FROM registry.redhat.io/ubi7/ubi
+# FROM registry.redhat.io/ubi7/ubi#
 FROM davekrier/nodejs-10
 
 USER root
