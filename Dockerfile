@@ -1,4 +1,3 @@
-# FROM registry.redhat.io/ubi7/ubi changed to new repo
 FROM davekrier/nodejs-10
 
 USER root
