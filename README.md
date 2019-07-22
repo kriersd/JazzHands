@@ -42,4 +42,4 @@ Cloudflare has been configured to balance the load across both clusters.
 
 # What's the point here?
 
-* We are demonstrating the ability to leverage multiple Kubernetes clusters to host your application with CloudFlare being the load balancer to spread the load across these seemingly unrelated clusters. This type of configuration brings a level of high availability and disaster recovery capabilities. 
+* We are demonstrating the ability to leverage multiple Kubernetes clusters to host your application with CloudFlare being the load balancer to spread the load across these seemingly unrelated clusters. This type of configuration brings a new level of high availability and disaster recovery capabilities to light.  
