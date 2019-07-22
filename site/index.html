@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Home - JazzHands</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Home";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> JazzHands</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href=".">Home</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#iks-openshift-cloudflare-demo">IKS OpenShift CloudFlare DEMO</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#k8s-cluster-setup-navigate-to-ibmcloudcom-login">K8's CLUSTER SETUP Navigate to ibmcloud.com Login</a></li>
+        
+            <li><a class="toctree-l3" href="#cluster-context-configuration">CLUSTER CONTEXT CONFIGURATION</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#download-git-repo-download">Download Git Repo Download</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#apply-yaml-to-create-k8s-objects">Apply YAML to Create K8's Objects</a></li>
+        
+            <li><a class="toctree-l3" href="#gain-access-to-your-cluster">Gain access to your cluster</a></li>
+        
+            <li><a class="toctree-l3" href="#dns-setup">DNS SETUP</a></li>
+        
+            <li><a class="toctree-l3" href="#global-load-balancer-cloudflare-setup">GLOBAL LOAD BALANCER (CLOUDFLARE) SETUP</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">JazzHands</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Home</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="iks-openshift-cloudflare-demo">IKS OpenShift CloudFlare DEMO</h1>
+<ul>
+<li>
+<p>Go to cloud.ibm.com login</p>
+</li>
+<li>
+<p>Install IBM Cloud CLI's if not already installed</p>
+</li>
+<li>
+<p>Download and install a few CLI tools and the Kubernetes Service plug-in.</p>
+</li>
+<li>
+<p>curl -sL https://ibm.biz/idt-installer | bash
+Download OpenShift CLI from</p>
+</li>
+<li>
+<p>https://www.okd.io/download.html</p>
+</li>
+</ul>
+<h2 id="k8s-cluster-setup-navigate-to-ibmcloudcom-login">K8's CLUSTER SETUP Navigate to ibmcloud.com Login</h2>
+<ul>
+<li>
+<p>In Search Bar search for Kubernetes Service Select Kubernetes Service Select Create Button</p>
+</li>
+<li>
+<p>Create IKS cluster type with following attributes Single Zone tag with jazz Select a location that you want 2 Worker Nodes</p>
+</li>
+<li>
+<p>Selct the Create Cluster Button</p>
+</li>
+<li>
+<p>While that's provisioning, Navigate back to Clusters</p>
+</li>
+<li>
+<p>Create OpenShift cluster type with following attributes Single Zone tag with jazz Select an avaible location 2 Worker Nodes</p>
+</li>
+<li>
+<p>Selct the Create Cluster Button</p>
+</li>
+</ul>
+<h2 id="cluster-context-configuration">CLUSTER CONTEXT CONFIGURATION</h2>
+<ul>
+<li>
+<p>Navigate to IBM Cloud Kubernetes CLusters, Select Cluster Go to Access Tab Follow Steps 1 through 4 </p>
+</li>
+<li>
+<p>Show kubectl get nodes Command</p>
+</li>
+</ul>
+<h1 id="download-git-repo-download">Download Git Repo Download</h1>
+<ul>
+<li>https://github.com/kriersd/JazzHands github repo b Unzip and navigate to the yaml dir within the zip</li>
+</ul>
+<h2 id="apply-yaml-to-create-k8s-objects">Apply YAML to Create K8's Objects</h2>
+<ul>
+<li>
+<p>First going to create the set of objects in IKS to do this</p>
+<p><code>kubectl apply -f jazzhands-iks.yaml
+kubectl get services</code></p>
+</li>
+</ul>
+<p>insert picture with IP</p>
+<ul>
+<li>
+<p>Open a browser and go to the external IP address from the klubectl get services from the loadbalancer service</p>
+</li>
+<li>
+<p>Open a seperate terminal/session in order to work with openshift</p>
+</li>
+<li>
+<p>Navigate to Kubernetes -&gt; your openshift cluster Go to the Access Tab click</p>
+</li>
+<li>
+<p>download OpenShift CLI from</p>
+<p><code>https://www.okd.io/download.html</code></p>
+</li>
+</ul>
+<h2 id="gain-access-to-your-cluster">Gain access to your cluster</h2>
+<p>When your cluster is fully deployed, log in to it with your IBMid by using one of the following methods: Browse to the OpenShift console</p>
+<ul>
+<li>In the Upper Right corner select your IAM# and copy the login context for your OpenShift Cluster</li>
+</ul>
+<p>Something similar to</p>
+<pre><code>oc login https://c1-e.us-east.containers.cloud.ibm.com:24341 --token=wwL81E-bOZilW_Un8Czl2fWrwMyWCu_2r4FOjHlQIlE
+</code></pre>
+
+<ul>
+<li>navigate to the directory that contains jazzhands-openshift.yaml</li>
+</ul>
+<pre><code>oc apply -f jazzhands-openshift.yaml
+
+oc get services Make note of the External-IP for the Jazzhands-lb that is output picture
+</code></pre>
+
+<h2 id="dns-setup">DNS SETUP</h2>
+<ul>
+<li>
+<p>Navigate to Hamburger Menu on upper left hand side of screen show image button capture</p>
+</li>
+<li>
+<p>Navigate to Classic Infrastucture</p>
+</li>
+<li>
+<p>Within Classic Infastructure drop down on left side Navigate to Services -&gt; Registration</p>
+</li>
+<li>
+<p>Once on page select register</p>
+</li>
+<li>
+<p>Input domain name of choice (arbitrary but unique)</p>
+</li>
+<li>
+<p>select year(s) for registration</p>
+</li>
+<li>
+<p>select Check availibility button</p>
+</li>
+<li>
+<p>select Continue Button</p>
+</li>
+<li>
+<p>Fill in manadatory fields on Complete Registraiton Page</p>
+</li>
+<li>
+<p>Select Order Now Button</p>
+</li>
+<li>
+<p>Select OK</p>
+</li>
+<li>
+<p>You will recieve a validation e-mail from Softlayer in 5 minutes</p>
+</li>
+<li>
+<p>In your e-mail there will be a validation link to click.</p>
+</li>
+<li>
+<p>While you're waiting for the e-mail navigate back to IBM Cloud and in the search bar at the top of screen input "Internet Services" Show Picture of Tile</p>
+</li>
+<li>
+<p>Select the Internet Services Tile</p>
+</li>
+<li>
+<p>Create a Name related to your newly created domain</p>
+</li>
+<li>
+<p>Tag the service appropriately for your purposes</p>
+</li>
+<li>
+<p>You can select free trial or standard as Pricing Plan type</p>
+</li>
+<li>
+<p>Select Create Button at bottom of screen</p>
+</li>
+<li>
+<p>You have now created a CIS Instance</p>
+</li>
+<li>
+<p>On the Internet Services Page</p>
+</li>
+<li>
+<p>Navigate to the Lets Get Started Button</p>
+</li>
+<li>
+<p>Input newly created domain when</p>
+</li>
+<li>
+<p>Select Connect and Continue Buttons</p>
+</li>
+<li>
+<p>On the Setup your DNS Records Flow page select next step button</p>
+</li>
+<li>
+<p>Make note of the new NS records</p>
+</li>
+<li>
+<p>Open a new tab and Navigate back to Classic Infrastructure within ibmcloud.com</p>
+</li>
+</ul>
+<h2 id="global-load-balancer-cloudflare-setup">GLOBAL LOAD BALANCER (CLOUDFLARE) SETUP</h2>
+<ul>
+<li>
+<p>From the hamburger Menu top right Services -&gt; Domain Registration</p>
+</li>
+<li>
+<p>change from locked to unlocked</p>
+</li>
+<li>
+<p>Update Custom Name Servers</p>
+</li>
+<li>
+<p>Select the Add/Edit NS Link</p>
+</li>
+<li>
+<p>Replace the existing Name Server Entries with</p>
+</li>
+<li>
+<p>the New Name servers provided by CIS</p>
+</li>
+<li>
+<p>Select the Associate Button</p>
+</li>
+<li>
+<p>You'll recieve a success verification notification pop up in the top right of the IBM Cloud page Navigate to your CIS Tab</p>
+</li>
+<li>
+<p>Within your CIS Management Page, reload the page, verify that your domain is active by noting the green indicator with a state of "Active"</p>
+</li>
+<li>
+<p>Scroll to the Load Balancers Link and select</p>
+</li>
+<li>
+<p>Scroll to the Origin Pools Section select Create Pool Button</p>
+</li>
+<li>
+<p>Input a Pool Name such as JazzHands (no spaces)</p>
+</li>
+<li>
+<p>In the Health check section input a "/"and define the port # as 80</p>
+</li>
+<li>
+<p>Select a region that's relevant</p>
+</li>
+<li>
+<p>Omit your e-mail, thank me later
+Scroll to the Origins Section Provide an Origin name and provide the exteral IP address noted previously from the kubectl describe service command Select Enable toggle to right to enable the address</p>
+</li>
+<li>
+<p>Click the Add Origin Button up
+run the OC get services command and make note of the jazzhands-lb EXTERNAL-IP ip address</p>
+</li>
+<li>
+<p>Add and Origin Name and the ip from the get services command 
+Select Enable toggle to right to enable the address</p>
+</li>
+<li>
+<p>Finish this set of steps by selecting the create button</p>
+</li>
+<li>
+<p>The Health check will show Critical initially, this is normal and will rectify itself in 1-2 min with a page refresh.</p>
+</li>
+<li>
+<p>Scoll to LoadBalancers Section
+Select the Create load balancer button
+in the Balancer Hostname field
+provide *.yournewdomainname</p>
+</li>
+<li>
+<p>Scroll down to the Add pool button and select the Originpool that was just created</p>
+</li>
+<li>
+<p>Select the Create button </p>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2019-07-22 20:45:01
+-->
