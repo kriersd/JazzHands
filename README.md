@@ -9,7 +9,7 @@ Please see the MKDocs GitHub Pages Site for complete documentation.
     
 [http://www.jazzhands-bitcoin.com](http://www.jazzhands-bitcoin.com)
 
-![](img/jazzhands-site.png)
+![](site/img/jazzhands-site.png)
 
 The application is a simple Node.JS applciation that shows all venue's in a specific area that accepts Bitcoins as payments. The application isn't anything too special, it just allows us to demonstrate the use of CloudFlare. 
 
@@ -22,7 +22,7 @@ We have configured two Kubernetes clusters for this demonstration. Both are curr
 
 Cloudflare has been configured to balance the load across both clusters. 
 
-![](img/env.png)
+![](site/img/env.png)
 
 # Demo Steps
 
