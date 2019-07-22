@@ -1,11 +1,3 @@
-#Jazz Hands Demo: 
-
-Please see the MKDocs GitHub Pages Site. 
-
-[https://kriersd.github.io/JazzHands/](https://kriersd.github.io/JazzHands/)
-
-
-
 #IKS OpenShift CloudFlare DEMO
 
 Go to cloud.ibm.com login
