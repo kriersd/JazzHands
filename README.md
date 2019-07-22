@@ -9,9 +9,19 @@ Please see the MKDocs GitHub Pages Site for complete documentation.
     
 [http://www.jazzhands-bitcoin.com](http://www.jazzhands-bitcoin.com)
 
-![](images/jazzhands-site.png)
+![](public/images/site.png)
+
+The application has been containerized and upladed to a public Docker repository. 
+
+### The Kubernetes artifacts 
+
+* Load Balancer
+* Deployment (With 2 replicas for HA) 
+* ConfigMap
 
 The application is a simple Node.JS applciation that shows all venue's in a specific area that accepts Bitcoins as payments. The application isn't anything too special, it just allows us to demonstrate the use of CloudFlare. 
+
+All of the artifacts to build this application yourself have been published to this GitHub repository. 
 
 # The Demo Environment
 
@@ -20,9 +30,10 @@ We have configured two Kubernetes clusters for this demonstration. Both are curr
 * IKS 
 * OpenShift
 
+
 Cloudflare has been configured to balance the load across both clusters. 
 
-![](images/env.png)
+![](public/images/env.png)
 
 # Demo Steps
 
