@@ -1,4 +1,4 @@
-#Jazz Hands Demo: 
+# Jazz Hands Demo: 
 
 Please see the MKDocs GitHub Pages Site. 
 
@@ -6,7 +6,7 @@ Please see the MKDocs GitHub Pages Site.
 
 
 
-#IKS OpenShift CloudFlare DEMO
+# IKS OpenShift CloudFlare DEMO
 
 Go to cloud.ibm.com login
 
@@ -18,7 +18,7 @@ Download and install a few CLI tools and the Kubernetes Service plug-in.
 Download OpenShift CLI from
 
 	https://www.okd.io/download.html
-##K8's CLUSTER SETUP Navigate to ibmcloud.com Login
+## K8's CLUSTER SETUP Navigate to ibmcloud.com Login
 
 In Search Bar search for Kubernetes Service Select Kubernetes Service Select Create Button
 
@@ -32,11 +32,13 @@ Create OpenShift cluster type with following attributes Single Zone tag with jaz
 
 Selct the Create Cluster Button
 
-##CLUSTER CONTEXT CONFIGURATION Navigate to IBM Cloud Kubernetes CLusters, Select Cluster Go to Access Tab Follow Steps 1 through 4 Show kubectl get nodes Command
+## CLUSTER CONTEXT CONFIGURATION 
+Navigate to IBM Cloud Kubernetes CLusters, Select Cluster Go to Access Tab Follow Steps 1 through 4 Show kubectl get nodes Command
 
-#Download Git Repo Download https://github.com/kriersd/JazzHands github repo b Unzip and navigate to the yaml dir within the zip
+# Download Git Repo Download 
+https://github.com/kriersd/JazzHands github repo b Unzip and navigate to the yaml dir within the zip
 
-##Apply YAML to Create K8's Objects First going to create the set of objects in IKS to do this
+## Apply YAML to Create K8's Objects First going to create the set of objects in IKS to do this
 
 		kubectl apply -f jazzhands-iks.yaml
 		kubectl get services
@@ -69,7 +71,7 @@ oc apply -f jazzhands-openshift.yaml
 oc get services
 Make note of the External-IP for the Jazzhands-lb that is output picture
 
-##DNS SETUP
+## DNS SETUP
 
 Navigate to Hamburger Menu on upper left hand side of screen show image button capture
 
@@ -125,7 +127,7 @@ Make note of the new NS records
 
 Open a new tab and Navigate back to Classic Infrastructure within ibmcloud.com
 
-##GLOBAL LOAD BALANCER (CLOUDFLARE) SETUP
+## GLOBAL LOAD BALANCER (CLOUDFLARE) SETUP
 
 From the hamburger Menu top right Services -> Domain Registration
 
