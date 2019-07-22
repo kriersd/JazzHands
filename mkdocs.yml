@@ -1,5 +1,4 @@
 site_name: JazzHands
-theme:
-  name: 'readthedocs'
-markdown_extensions:
-  - admonition
+nav:
+    - Home: index.md
+theme: readthedocs
