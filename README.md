@@ -1,6 +1,6 @@
 # CloudFlare Jazz Hands Demo: 
 
-Please see the MKDocs GitHub Pages Site for complete documentation. 
+Please see the MKDocs GitHub Pages Site for complete documentation on what it takes to build this applciation and deploy it. 
 
 [https://kriersd.github.io/JazzHands/](https://kriersd.github.io/JazzHands/)
 
