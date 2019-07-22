@@ -1,5 +1,5 @@
 site_name: JazzHands
 theme:
-  name: 'rtd-dropdown'
+  name: 'readthedocs'
 markdown_extensions:
   - admonition
