@@ -1,190 +1,34 @@
-# Jazz Hands Demo: 
+# CloudFlare Jazz Hands Demo: 
 
-Please see the MKDocs GitHub Pages Site. 
+Please see the MKDocs GitHub Pages Site for complete documentation. 
 
 [https://kriersd.github.io/JazzHands/](https://kriersd.github.io/JazzHands/)
 
 
+# Working Demo
+    
+[http://www.jazzhands-bitcoin.com](http://www.jazzhands-bitcoin.com)
 
-# IKS OpenShift CloudFlare DEMO
+![](img/jazzhands-site.png)
 
-Go to cloud.ibm.com login
+The application is a simple Node.JS applciation that shows all venue's in a specific area that accepts Bitcoins as payments. The application isn't anything too special, it just allows us to demonstrate the use of CloudFlare. 
 
-Install IBM Cloud CLI's if not already installed
+# The Demo Environment
 
-Download and install a few CLI tools and the Kubernetes Service plug-in.
+We have configured two Kubernetes clusters for this demonstration. Both are currently running in the IBM Public Cloud. 
 
-	curl -sL https://ibm.biz/idt-installer | bash
-Download OpenShift CLI from
+* IKS 
+* OpenShift
 
-	https://www.okd.io/download.html
-## K8's CLUSTER SETUP Navigate to ibmcloud.com Login
+Cloudflare has been configured to balance the load across both clusters. 
 
-In Search Bar search for Kubernetes Service Select Kubernetes Service Select Create Button
+![](img/env.png)
 
-Create IKS cluster type with following attributes Single Zone tag with jazz Select a location that you want 2 Worker Nodes
+# Demo Steps
 
-Selct the Create Cluster Button
+* Go to the app site. www.jazzhands-bitcoin.com
+* You will see the icon in the upper left hand that shows which cluster this page was served from. You will also see a 60 second count down timer. CloudFlare will cache the session for 60 seconds, so any attempts to refresh the page within 60 seconds you will be routed back to the existing cluster. After the 60 second session timeout, it will load balance the next request, which may or may not route you back to the same cluster. Eventually you will see that it will route you to the other cluster. It may take a few trys though. 
 
-While that's provisioning, Navigate back to Clusters
+# What's the point here?
 
-Create OpenShift cluster type with following attributes Single Zone tag with jazz Select an avaible location 2 Worker Nodes
-
-Selct the Create Cluster Button
-
-## CLUSTER CONTEXT CONFIGURATION 
-Navigate to IBM Cloud Kubernetes CLusters, Select Cluster Go to Access Tab Follow Steps 1 through 4 Show kubectl get nodes Command
-
-# Download Git Repo Download 
-https://github.com/kriersd/JazzHands github repo b Unzip and navigate to the yaml dir within the zip
-
-## Apply YAML to Create K8's Objects First going to create the set of objects in IKS to do this
-
-		kubectl apply -f jazzhands-iks.yaml
-		kubectl get services
-insert picture with IP
-
-	Open a browser and go to the external IP address from the klubectl get services from the loadbalancer service
-Open a seperate terminal/session in order to work with openshift
-
-Navigate to Kubernetes -> your openshift cluster Go to the Access Tab click
-
-download OpenShift CLI from
-
-https://www.okd.io/download.html
-
-Gain access to your cluster
-
-When your cluster is fully deployed, log in to it with your IBMid by using one of the following methods:
-Browse to the OpenShift console
-
-In the Upper Right corner select your IAM# and copy the login context for your OpenShift Cluster
-
-Something similar to
-
-oc login https://c1-e.us-east.containers.cloud.ibm.com:24341 --token=wwL81E-bOZilW_Un8Czl2fWrwMyWCu_2r4FOjHlQIlE
-
-navigate to the directory that contains jazzhands-openshift.yaml
-
-oc apply -f jazzhands-openshift.yaml
-
-oc get services
-Make note of the External-IP for the Jazzhands-lb that is output picture
-
-## DNS SETUP
-
-Navigate to Hamburger Menu on upper left hand side of screen show image button capture
-
-Navigate to Classic Infrastucture
-
-Within Classic Infastructure drop down on left side Navigate to Services -> Registration
-
-Once on page select register
-
-Input domain name of choice (arbitrary but unique)
-
-select year(s) for registration
-
-select Check availibility button
-
-select Continue Button
-
-Fill in manadatory fields on Complete Registraiton Page
-
-Select Order Now Button
-
-Select OK
-
-You will recieve a validation e-mail from Softlayer in 5 minutes
-
-In your e-mail there will be a validation link to click.
-
-While you're waiting for the e-mail navigate back to IBM Cloud and in the search bar at the top of screen input "Internet Services" Show Picture of Tile
-
-Select the Internet Services Tile
-
-Create a Name related to your newly created domain
-
-Tag the service appropriately for your purposes
-
-You can select free trial or standard as Pricing Plan type
-
-Select Create Button at bottom of screen
-
-You have now created a CIS Instance
-
-On the Internet Services Page
-
-Navigate to the Lets Get Started Button
-
-input newly created domain when
-
-Select Connect and Continue Buttons
-
-On the Setup your DNS Records Flow page select next step button
-
-Make note of the new NS records
-
-Open a new tab and Navigate back to Classic Infrastructure within ibmcloud.com
-
-## GLOBAL LOAD BALANCER (CLOUDFLARE) SETUP
-
-From the hamburger Menu top right Services -> Domain Registration
-
-change from locked to unlocked
-
-Update Custom Name Servers
-
-Select the Add/Edit NS Link
-
-Replace the existing Name Server Entries with
-
-the New Name servers provided by CIS
-
-Select the Associate Button
-
-You'll recieve a success verification notification pop up in the top right of the IBM Cloud page
-Navigate to your CIS Tab
-
-Within your CIS Management Page, reload the page, verify that your domain is active by noting the green indicator with a state of "Active"
-
-Scroll to the Load Balancers Link and select
-
-Scroll to the Origin Pools Section
-	select Create Pool Button
-	
-	Input a Pool Name such as JazzHands (no spaces)
-	
-	In the Health check section input a "/"and define the port # as 80
-	
-	Select a region that's relevant
-	
-	Omit your e-mail, thank me later
-	
-	
-Scroll to the Origins Section
-	Provide an Origin name and provide the exteral IP address noted previously from the kubectl describe service command
-	Select Enable toggle to right to enable the address
-	
-	Click the Add Origin Button up
-	
-run the OC get services command and make note of the jazzhands-lb EXTERNAL-IP ip address
-
-	add and Origin Name and the ip from the get services command 
-	Select Enable toggle to right to enable the address
-	
-	Finish this set of steps by selecting the create button
-	
-	The Health check will show Critical initially, this is normal and will rectify itself in 1-2 min with a page refresh.
-	
-	Scoll to LoadBalancers Section
-	Select the Create load balancer button
-	in the Balancer Hostname field
-	provide *.yournewdomainname
-	
-	Scroll down to the Add pool button and select the Originpool that was just created
-	
-	Select the Create button 
-Test the new domain name by going to a browser and entering your domain in the browser
-
-Create/Register Domain in IBM Cloud via Classic Infrastructure
+* We are demonstrating the ability to leverage multiple Kubernetes clusters to host your application with CloudFlare being the load balancer to spread the load across these seemingly unrelated clusters. This type of configuration brings a level of high availability and disaster recovery capabilities. 
