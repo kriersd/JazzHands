@@ -1,0 +1,5 @@
+site_name: JazzHands
+nav:
+    - Home: index.md
+    - GitHub Repo: https://github.com/kriersd/JazzHands
+theme: readthedocs
