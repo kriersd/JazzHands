@@ -6,24 +6,24 @@
 
 * Download and install a few CLI tools and the Kubernetes Service plug-in.
 
-* curl -sL https://ibm.biz/idt-installer | bash
-Download OpenShift CLI from
-
-* https://www.okd.io/download.html
+* ```curl -sL https://ibm.biz/idt-installer | bash```
+* Download OpenShift CLI from https://www.okd.io/download.html
 
 ##K8's CLUSTER SETUP Navigate to ibmcloud.com Login
 
-* In Search Bar search for Kubernetes Service Select Kubernetes Service Select Create Button
+* In the Search Bar search for Kubernetes Service
+* Select Kubernetes Service
+* Select Create Button
 
-* Create IKS cluster type with following attributes Single Zone tag with jazz Select a location that you want 2 Worker Nodes
+* Create IKS cluster type with following attributes: Single Zone tag with jazz Select a location that you want 2 Worker Nodes
 
-* Selct the Create Cluster Button
+* Select the Create Cluster Button
 
 * While that's provisioning, Navigate back to Clusters
 
-* Create OpenShift cluster type with following attributes Single Zone tag with jazz Select an avaible location 2 Worker Nodes
+* Create OpenShift cluster type with following attributes: Single Zone tag with jazz Select an avaible location 2 Worker Nodes
 
-* Selct the Create Cluster Button
+* Select the Create Cluster Button
 
 ##CLUSTER CONTEXT CONFIGURATION 
 
@@ -39,10 +39,10 @@ Download OpenShift CLI from
 
 * First going to create the set of objects in IKS to do this
 
-	```
-	kubectl apply -f jazzhands-iks.yaml
-	kubectl get services
-	```
+```
+kubectl apply -f jazzhands-iks.yaml
+kubectl get services
+```
 	
 insert picture with IP
 
@@ -76,8 +76,9 @@ oc login https://c1-e.us-east.containers.cloud.ibm.com:24341 --token=wwL81E-bOZi
 ```
 oc apply -f jazzhands-openshift.yaml
 
-oc get services Make note of the External-IP for the Jazzhands-lb that is output picture
+oc get services 
 ```
+Make note of the External-IP for the Jazzhands-lb that is output picture
 
 ##DNS SETUP
 
