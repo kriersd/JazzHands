@@ -82,13 +82,19 @@ Make note of the External-IP for the Jazzhands-lb that is output picture
 
 ##DNS SETUP
 
-* Navigate to Hamburger Menu on upper left hand side of screen show image button capture
+* Navigate to Hamburger Menu on upper left hand side of screen 
 
 * Navigate to Classic Infrastucture
 
+![](dns-new-domain1.png)
+
 * Within Classic Infastructure drop down on left side Navigate to Services -> Domain Registration
 
+![](dns-new-domain2.png)
+
 * Once on page select Register
+
+![](dns-new-domain3.png)
 
 * Input domain name of choice (arbitrary but unique)
 
@@ -130,9 +136,15 @@ Make note of the External-IP for the Jazzhands-lb that is output picture
 
 * Select Connect and Continue Buttons
 
+![](lb-setup1.png)
+
 * On the Setup your DNS Records Flow page select Next step button
 
+![](lb-setup2.png)
+
 * Make note of the new NS records, you will need to use these later
+
+![](lb-setup3.png)
 
 * Open a new tab and Navigate back to Classic Infrastructure within ibmcloud.com
 
@@ -144,23 +156,35 @@ Make note of the External-IP for the Jazzhands-lb that is output picture
 
 * Click the twistie to expand details below your new DNS record
 
+![](dns-new-domain4.png)
+
 * Update Custom Name Servers
 
 * Select the Add/Edit NS Link
 
 * Replace the existing Name Server Entries with the 2 new entries from your Internet Services 
 
+![](dns-new-domain5.png)
+
 * the New Name servers provided by CIS
 
 * Select the Associate Button
+
+![](dns-new-domain6.png)
 
 * You'll receive a success verification notification pop up in the top right of the IBM Cloud page Navigate to your CIS Tab
 
 * Within your CIS Management Page, reload the page, verify that your domain is active by noting the green indicator with a state of "Active"
 
+![](lb-setup4.png)
+
 * Scroll to the Load Balancers Link and select the link
 
+![](lb-setup5.png)
+
 * Scroll to the Origin Pools Section select Create Pool button
+
+![](lb-setup6.png)
 
 * Input a Pool Name such as JazzHands (no spaces)
 
@@ -169,6 +193,9 @@ Make note of the External-IP for the Jazzhands-lb that is output picture
 * Under Health Check Region, select a region that's nearest your Kubernetes services
 
 * Omit your e-mail (you will thank me later)
+
+![](lb-setup7.png)
+
 * Scroll to the Origins Section 
 * Provide an Origin name and provide the exteral IP address noted previously from the kubectl describe service command 
 * Select Enable toggle to right to enable the address
@@ -179,16 +206,24 @@ run the OC get services command and make note of the jazzhands-lb EXTERNAL-IP ip
 * Add and Origin Name and the ip from the get services command 
 Select Enable toggle to right to enable the address
 
+![](lb-setup8.png)
+
 * Finish this set of steps by selecting the Create button
 
 * The Health check will show Critical initially, this is normal and will rectify itself in 1-2 min with a page refresh.
+
+![](lb-setup10.png)
 
 * Scroll to LoadBalancers Section
 * Select the Create Load Balancer button
 * in the Balancer Hostname field, provide *.yournewdomainname
 * Confirm the TTL is 60 seconds
 
+![](lb-setup9.png)
+
 * Scroll down to the Add Pool button and select the Originpool that was just created, click Add
+
+![](lb-setup11.png)
 
 * Select the Create button 
 

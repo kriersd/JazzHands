@@ -76,6 +76,8 @@
         
             <li><a class="toctree-l3" href="#global-load-balancer-cloudflare-setup">GLOBAL LOAD BALANCER (CLOUDFLARE) SETUP</a></li>
         
+            <li><a class="toctree-l3" href="#test-your-setup">TEST YOUR SETUP</a></li>
+        
         </ul>
     
 
@@ -131,32 +133,31 @@
 <p>Download and install a few CLI tools and the Kubernetes Service plug-in.</p>
 </li>
 <li>
-<p>curl -sL https://ibm.biz/idt-installer | bash
-Download OpenShift CLI from</p>
+<p><code>curl -sL https://ibm.biz/idt-installer | bash</code></p>
 </li>
-<li>
-<p>https://www.okd.io/download.html</p>
-</li>
+<li>Download OpenShift CLI from https://www.okd.io/download.html</li>
 </ul>
 <h2 id="k8s-cluster-setup-navigate-to-ibmcloudcom-login">K8's CLUSTER SETUP Navigate to ibmcloud.com Login</h2>
 <ul>
+<li>In the Search Bar search for Kubernetes Service</li>
+<li>Select Kubernetes Service</li>
 <li>
-<p>In Search Bar search for Kubernetes Service Select Kubernetes Service Select Create Button</p>
+<p>Select Create Button</p>
 </li>
 <li>
-<p>Create IKS cluster type with following attributes Single Zone tag with jazz Select a location that you want 2 Worker Nodes</p>
+<p>Create IKS cluster type with following attributes: Single Zone tag with jazz Select a location that you want 2 Worker Nodes</p>
 </li>
 <li>
-<p>Selct the Create Cluster Button</p>
+<p>Select the Create Cluster Button</p>
 </li>
 <li>
 <p>While that's provisioning, Navigate back to Clusters</p>
 </li>
 <li>
-<p>Create OpenShift cluster type with following attributes Single Zone tag with jazz Select an avaible location 2 Worker Nodes</p>
+<p>Create OpenShift cluster type with following attributes: Single Zone tag with jazz Select an avaible location 2 Worker Nodes</p>
 </li>
 <li>
-<p>Selct the Create Cluster Button</p>
+<p>Select the Create Cluster Button</p>
 </li>
 </ul>
 <h2 id="cluster-context-configuration">CLUSTER CONTEXT CONFIGURATION</h2>
@@ -174,12 +175,12 @@ Download OpenShift CLI from</p>
 </ul>
 <h2 id="apply-yaml-to-create-k8s-objects">Apply YAML to Create K8's Objects</h2>
 <ul>
-<li>
-<p>First going to create the set of objects in IKS to do this</p>
-<p><code>kubectl apply -f jazzhands-iks.yaml
-kubectl get services</code></p>
-</li>
+<li>First going to create the set of objects in IKS to do this</li>
 </ul>
+<pre><code>kubectl apply -f jazzhands-iks.yaml
+kubectl get services
+</code></pre>
+
 <p>insert picture with IP</p>
 <ul>
 <li>
@@ -210,23 +211,29 @@ kubectl get services</code></p>
 </ul>
 <pre><code>oc apply -f jazzhands-openshift.yaml
 
-oc get services Make note of the External-IP for the Jazzhands-lb that is output picture
+oc get services 
 </code></pre>
 
+<p>Make note of the External-IP for the Jazzhands-lb that is output picture</p>
 <h2 id="dns-setup">DNS SETUP</h2>
 <ul>
 <li>
-<p>Navigate to Hamburger Menu on upper left hand side of screen show image button capture</p>
+<p>Navigate to Hamburger Menu on upper left hand side of screen </p>
 </li>
 <li>
 <p>Navigate to Classic Infrastucture</p>
 </li>
-<li>
-<p>Within Classic Infastructure drop down on left side Navigate to Services -&gt; Registration</p>
-</li>
-<li>
-<p>Once on page select register</p>
-</li>
+</ul>
+<p><img alt="" src="dns-new-domain1.png" /></p>
+<ul>
+<li>Within Classic Infastructure drop down on left side Navigate to Services -&gt; Domain Registration</li>
+</ul>
+<p><img alt="" src="dns-new-domain2.png" /></p>
+<ul>
+<li>Once on page select Register</li>
+</ul>
+<p><img alt="" src="dns-new-domain3.png" /></p>
+<ul>
 <li>
 <p>Input domain name of choice (arbitrary but unique)</p>
 </li>
@@ -234,16 +241,16 @@ oc get services Make note of the External-IP for the Jazzhands-lb that is output
 <p>select year(s) for registration</p>
 </li>
 <li>
-<p>select Check availibility button</p>
+<p>select Check Availability button</p>
 </li>
 <li>
-<p>select Continue Button</p>
+<p>select Continue button</p>
 </li>
 <li>
-<p>Fill in manadatory fields on Complete Registraiton Page</p>
+<p>Fill in manadatory fields on Complete Registration Page</p>
 </li>
 <li>
-<p>Select Order Now Button</p>
+<p>Select Order Now button</p>
 </li>
 <li>
 <p>Select OK</p>
@@ -267,7 +274,7 @@ oc get services Make note of the External-IP for the Jazzhands-lb that is output
 <p>Tag the service appropriately for your purposes</p>
 </li>
 <li>
-<p>You can select free trial or standard as Pricing Plan type</p>
+<p>You can select Free Trial or standard as Pricing Plan type</p>
 </li>
 <li>
 <p>Select Create Button at bottom of screen</p>
@@ -282,20 +289,23 @@ oc get services Make note of the External-IP for the Jazzhands-lb that is output
 <p>Navigate to the Lets Get Started Button</p>
 </li>
 <li>
-<p>Input newly created domain when</p>
+<p>Input newly created domain in Domain name </p>
 </li>
 <li>
 <p>Select Connect and Continue Buttons</p>
 </li>
-<li>
-<p>On the Setup your DNS Records Flow page select next step button</p>
-</li>
-<li>
-<p>Make note of the new NS records</p>
-</li>
-<li>
-<p>Open a new tab and Navigate back to Classic Infrastructure within ibmcloud.com</p>
-</li>
+</ul>
+<p><img alt="" src="lb-setup1.png" /></p>
+<ul>
+<li>On the Setup your DNS Records Flow page select Next step button</li>
+</ul>
+<p><img alt="" src="lb-setup2.png" /></p>
+<ul>
+<li>Make note of the new NS records, you will need to use these later</li>
+</ul>
+<p><img alt="" src="lb-setup3.png" /></p>
+<ul>
+<li>Open a new tab and Navigate back to Classic Infrastructure within ibmcloud.com</li>
 </ul>
 <h2 id="global-load-balancer-cloudflare-setup">GLOBAL LOAD BALANCER (CLOUDFLARE) SETUP</h2>
 <ul>
@@ -303,8 +313,14 @@ oc get services Make note of the External-IP for the Jazzhands-lb that is output
 <p>From the hamburger Menu top right Services -&gt; Domain Registration</p>
 </li>
 <li>
-<p>change from locked to unlocked</p>
+<p>change from Locked to Unlocked</p>
 </li>
+<li>
+<p>Click the twistie to expand details below your new DNS record</p>
+</li>
+</ul>
+<p><img alt="" src="dns-new-domain4.png" /></p>
+<ul>
 <li>
 <p>Update Custom Name Servers</p>
 </li>
@@ -312,38 +328,56 @@ oc get services Make note of the External-IP for the Jazzhands-lb that is output
 <p>Select the Add/Edit NS Link</p>
 </li>
 <li>
-<p>Replace the existing Name Server Entries with</p>
+<p>Replace the existing Name Server Entries with the 2 new entries from your Internet Services </p>
 </li>
+</ul>
+<p><img alt="" src="dns-new-domain5.png" /></p>
+<ul>
 <li>
 <p>the New Name servers provided by CIS</p>
 </li>
 <li>
 <p>Select the Associate Button</p>
 </li>
+</ul>
+<p><img alt="" src="dns-new-domain6.png" /></p>
+<ul>
 <li>
-<p>You'll recieve a success verification notification pop up in the top right of the IBM Cloud page Navigate to your CIS Tab</p>
+<p>You'll receive a success verification notification pop up in the top right of the IBM Cloud page Navigate to your CIS Tab</p>
 </li>
 <li>
 <p>Within your CIS Management Page, reload the page, verify that your domain is active by noting the green indicator with a state of "Active"</p>
 </li>
-<li>
-<p>Scroll to the Load Balancers Link and select</p>
-</li>
-<li>
-<p>Scroll to the Origin Pools Section select Create Pool Button</p>
-</li>
+</ul>
+<p><img alt="" src="lb-setup4.png" /></p>
+<ul>
+<li>Scroll to the Load Balancers Link and select the link</li>
+</ul>
+<p><img alt="" src="lb-setup5.png" /></p>
+<ul>
+<li>Scroll to the Origin Pools Section select Create Pool button</li>
+</ul>
+<p><img alt="" src="lb-setup6.png" /></p>
+<ul>
 <li>
 <p>Input a Pool Name such as JazzHands (no spaces)</p>
 </li>
 <li>
-<p>In the Health check section input a "/"and define the port # as 80</p>
+<p>In the Health check section input a "/" and define the port # as 80</p>
 </li>
 <li>
-<p>Select a region that's relevant</p>
+<p>Under Health Check Region, select a region that's nearest your Kubernetes services</p>
 </li>
 <li>
-<p>Omit your e-mail, thank me later
-Scroll to the Origins Section Provide an Origin name and provide the exteral IP address noted previously from the kubectl describe service command Select Enable toggle to right to enable the address</p>
+<p>Omit your e-mail (you will thank me later)</p>
+</li>
+</ul>
+<p><img alt="" src="lb-setup7.png" /></p>
+<ul>
+<li>Scroll to the Origins Section </li>
+<li>Provide an Origin name and provide the exteral IP address noted previously from the kubectl describe service command </li>
+<li>
+<p>Select Enable toggle to right to enable the address</p>
 </li>
 <li>
 <p>Click the Add Origin Button up
@@ -353,24 +387,38 @@ run the OC get services command and make note of the jazzhands-lb EXTERNAL-IP ip
 <p>Add and Origin Name and the ip from the get services command 
 Select Enable toggle to right to enable the address</p>
 </li>
+</ul>
+<p><img alt="" src="lb-setup8.png" /></p>
+<ul>
 <li>
-<p>Finish this set of steps by selecting the create button</p>
+<p>Finish this set of steps by selecting the Create button</p>
 </li>
 <li>
 <p>The Health check will show Critical initially, this is normal and will rectify itself in 1-2 min with a page refresh.</p>
 </li>
-<li>
-<p>Scoll to LoadBalancers Section
-Select the Create load balancer button
-in the Balancer Hostname field
-provide *.yournewdomainname</p>
-</li>
-<li>
-<p>Scroll down to the Add pool button and select the Originpool that was just created</p>
-</li>
-<li>
-<p>Select the Create button </p>
-</li>
+</ul>
+<p><img alt="" src="lb-setup10.png" /></p>
+<ul>
+<li>Scroll to LoadBalancers Section</li>
+<li>Select the Create Load Balancer button</li>
+<li>in the Balancer Hostname field, provide *.yournewdomainname</li>
+<li>Confirm the TTL is 60 seconds</li>
+</ul>
+<p><img alt="" src="lb-setup9.png" /></p>
+<ul>
+<li>Scroll down to the Add Pool button and select the Originpool that was just created, click Add</li>
+</ul>
+<p><img alt="" src="lb-setup11.png" /></p>
+<ul>
+<li>Select the Create button </li>
+</ul>
+<h2 id="test-your-setup">TEST YOUR SETUP</h2>
+<ul>
+<li>Point a browser at the newly created DNS name (http://yournewdomain.com) </li>
+<li>Note on the upper-left whether you are currently running against IKS or ROKS</li>
+<li>Wait approximately 1 minute (the countdown timer is there to assist)</li>
+<li>Refresh the page</li>
+<li>Observe the change from IKS to ROKS</li>
 </ul>
               
             </div>
@@ -411,5 +459,5 @@ provide *.yournewdomainname</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-08-01 21:55:07
+Build Date UTC : 2019-12-09 22:35:00
 -->
