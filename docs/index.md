@@ -86,21 +86,21 @@ Make note of the External-IP for the Jazzhands-lb that is output picture
 
 * Navigate to Classic Infrastucture
 
-* Within Classic Infastructure drop down on left side Navigate to Services -> Registration
+* Within Classic Infastructure drop down on left side Navigate to Services -> Domain Registration
 
-* Once on page select register
+* Once on page select Register
 
 * Input domain name of choice (arbitrary but unique)
 
 * select year(s) for registration
 
-* select Check availibility button
+* select Check Availability button
 
-* select Continue Button
+* select Continue button
 
-* Fill in manadatory fields on Complete Registraiton Page
+* Fill in manadatory fields on Complete Registration Page
 
-* Select Order Now Button
+* Select Order Now button
 
 * Select OK
 
@@ -116,7 +116,7 @@ Make note of the External-IP for the Jazzhands-lb that is output picture
 
 * Tag the service appropriately for your purposes
 
-* You can select free trial or standard as Pricing Plan type
+* You can select Free Trial or standard as Pricing Plan type
 
 * Select Create Button at bottom of screen
 
@@ -126,13 +126,13 @@ Make note of the External-IP for the Jazzhands-lb that is output picture
 
 * Navigate to the Lets Get Started Button
 
-* Input newly created domain when
+* Input newly created domain in Domain name 
 
 * Select Connect and Continue Buttons
 
-* On the Setup your DNS Records Flow page select next step button
+* On the Setup your DNS Records Flow page select Next step button
 
-* Make note of the new NS records
+* Make note of the new NS records, you will need to use these later
 
 * Open a new tab and Navigate back to Classic Infrastructure within ibmcloud.com
 
@@ -140,34 +140,38 @@ Make note of the External-IP for the Jazzhands-lb that is output picture
 
 * From the hamburger Menu top right Services -> Domain Registration
 
-* change from locked to unlocked
+* change from Locked to Unlocked
+
+* Click the twistie to expand details below your new DNS record
 
 * Update Custom Name Servers
 
 * Select the Add/Edit NS Link
 
-* Replace the existing Name Server Entries with
+* Replace the existing Name Server Entries with the 2 new entries from your Internet Services 
 
 * the New Name servers provided by CIS
 
 * Select the Associate Button
 
-* You'll recieve a success verification notification pop up in the top right of the IBM Cloud page Navigate to your CIS Tab
+* You'll receive a success verification notification pop up in the top right of the IBM Cloud page Navigate to your CIS Tab
 
 * Within your CIS Management Page, reload the page, verify that your domain is active by noting the green indicator with a state of "Active"
 
-* Scroll to the Load Balancers Link and select
+* Scroll to the Load Balancers Link and select the link
 
-* Scroll to the Origin Pools Section select Create Pool Button
+* Scroll to the Origin Pools Section select Create Pool button
 
 * Input a Pool Name such as JazzHands (no spaces)
 
-* In the Health check section input a "/"and define the port # as 80
+* In the Health check section input a "/" and define the port # as 80
 
-* Select a region that's relevant
+* Under Health Check Region, select a region that's nearest your Kubernetes services
 
-* Omit your e-mail, thank me later
-Scroll to the Origins Section Provide an Origin name and provide the exteral IP address noted previously from the kubectl describe service command Select Enable toggle to right to enable the address
+* Omit your e-mail (you will thank me later)
+* Scroll to the Origins Section 
+* Provide an Origin name and provide the exteral IP address noted previously from the kubectl describe service command 
+* Select Enable toggle to right to enable the address
 
 * Click the Add Origin Button up
 run the OC get services command and make note of the jazzhands-lb EXTERNAL-IP ip address
@@ -175,15 +179,22 @@ run the OC get services command and make note of the jazzhands-lb EXTERNAL-IP ip
 * Add and Origin Name and the ip from the get services command 
 Select Enable toggle to right to enable the address
 
-* Finish this set of steps by selecting the create button
+* Finish this set of steps by selecting the Create button
 
 * The Health check will show Critical initially, this is normal and will rectify itself in 1-2 min with a page refresh.
 
-* Scoll to LoadBalancers Section
-Select the Create load balancer button
-in the Balancer Hostname field
-provide *.yournewdomainname
+* Scroll to LoadBalancers Section
+* Select the Create Load Balancer button
+* in the Balancer Hostname field, provide *.yournewdomainname
+* Confirm the TTL is 60 seconds
 
-* Scroll down to the Add pool button and select the Originpool that was just created
+* Scroll down to the Add Pool button and select the Originpool that was just created, click Add
 
 * Select the Create button 
+
+##TEST YOUR SETUP
+* Point a browser at the newly created DNS name (http://yournewdomain.com) 
+* Note on the upper-left whether you are currently running against IKS or ROKS
+* Wait approximately 1 minute (the countdown timer is there to assist)
+* Refresh the page
+* Observe the change from IKS to ROKS
