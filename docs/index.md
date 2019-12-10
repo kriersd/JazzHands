@@ -114,7 +114,9 @@ Make note of the External-IP for the Jazzhands-lb that is output picture
 
 * In your e-mail there will be a validation link to click.
 
-* While you're waiting for the e-mail navigate back to IBM Cloud and in the search bar at the top of screen input "Internet Services" Show Picture of Tile
+* While you're waiting for the e-mail navigate back to IBM Cloud and in the search bar at the top of screen input "Internet Services" 
+
+![](CISTile.png)
 
 * Select the Internet Services Tile
 
