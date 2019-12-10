@@ -114,8 +114,6 @@ Make note of the External-IP for the Jazzhands-lb that is output
 
 * While you're waiting for the e-mail navigate back to IBM Cloud and in the search bar at the top of screen input "Internet Services" 
 
-![](service.png)
-
 * Select the Internet Services Tile
 
 * Create a Name related to your newly created domain
