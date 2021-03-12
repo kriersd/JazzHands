@@ -21,7 +21,7 @@
     "moment-timezone": "^0.5.17",
     "jquery": "^3.3.1",
     "dotenv": "^6.2.0",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "requests": "^0.2.2"
   }
 }
